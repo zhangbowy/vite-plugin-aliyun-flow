@@ -8,7 +8,7 @@
     "build": "rimraf dist && tsc -p .",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "张博",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^18.11.9",
@@ -18,5 +18,19 @@
   },
   "dependencies": {
     "dayjs": "^1.11.6"
+  },
+  "homepage": "https://github.com/zhangbowy/vite-plugin-aliyun-flow#readme",
+  "keywords": [
+    "aliyun",
+    "flow",
+    "codeup",
+    "vite",
+    "vite-plugin",
+    "console",
+    "pipeline"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zhangbowy/vite-plugin-aliyun-flow.git"
   }
 }
