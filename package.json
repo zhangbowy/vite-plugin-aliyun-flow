@@ -1,0 +1,22 @@
+{
+  "name": "vite-plugin-aliyun-flow",
+  "version": "0.1.2",
+  "description": "阿里云效流水线控制台打印插件",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsc -w -p .",
+    "build": "rimraf dist && tsc -p .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.11.9",
+    "rimraf": "^3.0.2",
+    "typescript": "^4.8.4",
+    "vite": "^3.2.3"
+  },
+  "dependencies": {
+    "dayjs": "^1.11.6"
+  }
+}
