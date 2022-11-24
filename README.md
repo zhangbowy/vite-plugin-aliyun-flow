@@ -1,11 +1,13 @@
 ## vite-plugin-aliyun-flow
-阿里云流水线打印插件
+阿里云流水线打印构建信息插件
 
 
+目的: 准确的在控制台看到当前的运行代码的构建人、时间、分支、时间等
+
+掘金文章 https://juejin.cn/post/7140516996428333070
 ## 效果
 可以在控制台查看代码的部署信息
 ![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/69da24d8e31d4380822326b650a35e76~tplv-k3u1fbpfcp-watermark.image?)
-掘金文章 https://juejin.cn/post/7140516996428333070
 
 ##  使用
 只在阿里云流水线有用
@@ -14,7 +16,7 @@
 npm i vite-plugin-aliyun-flow --D
 ```
 
-vite.config.js/ts
+在vite.config.js/ts中配置
 ```
 import vitePluginAliFlow from "vite-plugin-aliyun-flow";
 
@@ -23,4 +25,12 @@ plugins: [
     vitePluginAliFlow({ projectName: '绩效'}),
     ...
 ]
+```
+
+### 插件参数
+目前版本只有一个项目名称配置
+```
+interface options {
+    projectName?: string; // 项目名称 没有配置的话会取 package.json里的name字段
+}
 ```
