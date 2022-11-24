@@ -12,7 +12,7 @@ export default function Aliflow(options: AliflowParam): Plugin {
 
     const pkg: any = fs.readFileSync(process.cwd() + '/package.json', 'utf-8')
 
-    const str: any = fs.readFileSync(path.join(__dirname, '../src/external.js'), 'utf-8')
+    const extStr: string = fs.readFileSync(path.join(__dirname, '../src/external.js'), 'utf-8')
 
     const { name, version } = JSON.parse(pkg);
 
@@ -22,10 +22,11 @@ export default function Aliflow(options: AliflowParam): Plugin {
         lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
 
-    let HtmlStr = `const __GLOBAL_ENV_ = ${JSON.stringify(env)};
+    let HtmlStr: string = `const __GLOBAL_ENV_ = ${JSON.stringify(env)};
     const __APP_INFO__ = ${JSON.stringify(__APP_INFO__)};`
 
-    HtmlStr += str
+    HtmlStr += extStr
+
     return {
         name: 'vite-plugin-aliuyun-flow',
         apply: 'build',
@@ -34,17 +35,17 @@ export default function Aliflow(options: AliflowParam): Plugin {
                 __APP_INFO__: JSON.stringify(__APP_INFO__),
                 __GLOBAL_ENV_: env,
             },
-          }),
-          transformIndexHtml(html) {
+        }),
+        transformIndexHtml(html) {
             return [
                 {
                     tag: 'script',
-                    attrs: {  defer: true },
+                    attrs: { defer: true },
                     children: HtmlStr,
                     injectTo: 'body'
-                  },
+                },
             ]
-          }
+        }
 
     };
 }
