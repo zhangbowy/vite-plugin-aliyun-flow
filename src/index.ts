@@ -1,13 +1,13 @@
-import type { Plugin } from 'vite';
+import type { Plugin, HtmlTagDescriptor } from 'vite';
 import dayjs from 'dayjs';
 import path from 'path';
 import fs from 'fs';
 
-interface AliflowParam {
+interface AliflowOptions {
     projectName?: string
 }
 
-export default function Aliflow(options: AliflowParam): Plugin {
+export default function Aliflow(options: AliflowOptions): Plugin {
     const env = process.env
 
     const pkg: any = fs.readFileSync(process.cwd() + '/package.json', 'utf-8')
@@ -22,10 +22,9 @@ export default function Aliflow(options: AliflowParam): Plugin {
         lastBuildTime: dayjs().format('YYYY-MM-DD HH:mm:ss'),
     };
 
-    let HtmlStr: string = `const __GLOBAL_ENV_ = ${JSON.stringify(env)};
-    const __APP_INFO__ = ${JSON.stringify(__APP_INFO__)};`
-
-    HtmlStr += extStr
+    const HtmlStr: string = `const __GLOBAL_ENV_ = ${JSON.stringify(env)};
+    const __APP_INFO__ = ${JSON.stringify(__APP_INFO__)};
+    \n ${extStr}`
 
     return {
         name: 'vite-plugin-aliuyun-flow',
@@ -36,7 +35,7 @@ export default function Aliflow(options: AliflowParam): Plugin {
                 __GLOBAL_ENV_: env,
             },
         }),
-        transformIndexHtml(html) {
+        transformIndexHtml(html): HtmlTagDescriptor[] {
             return [
                 {
                     tag: 'script',
