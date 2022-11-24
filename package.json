@@ -1,6 +1,6 @@
 {
   "name": "vite-plugin-aliyun-flow",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "控制台打印构阿里云效流水线建信息插件",
   "main": "dist/index.js",
   "scripts": {
