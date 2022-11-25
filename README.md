@@ -31,6 +31,6 @@ plugins: [
 目前版本只有一个项目名称配置
 ```
 interface options {
-    projectName?: string; // 项目名称 没有配置的话会取 package.json里的name字段
+    projectName?: string; // 项目名称 没有配置的话会取 package.json里的name字段。
 }
 ```
