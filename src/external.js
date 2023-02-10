@@ -27,3 +27,9 @@ console.log(
     }`,
     styles,
 );
+
+console.log(
+    `%c本次流水线执行记录:`,
+    styles,
+    `${__GLOBAL_ENV_.ENGINE_PIPELINE_PORTAL_URL}/pipelines/${__GLOBAL_ENV_.ENGINE_PIPELINE_ID}/current`,
+);
